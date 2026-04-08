@@ -41,7 +41,7 @@ export default function RootLayout({
                     <circle cx="50" cy="50" r="45" fill="url(#logoGrad)"/>
                     <text x="50" y="68" fontSize="45" textAnchor="middle">🍳</text>
                   </svg>
-                  <span className="font-bold text-2xl bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 bg-clip-text text-transparent group-hover:from-rose-500 group-hover:to-amber-500 transition-all duration-500">
+                  <span className="font-bold text-xl sm:text-2xl bg-gradient-to-r from-violet-600 via-fuchsia-500 to-rose-500 bg-clip-text text-transparent group-hover:from-rose-500 group-hover:to-amber-500 transition-all duration-500">
                     Recipe Explorer
                   </span>
                 </a>
