@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import SearchInput from '@/components/atoms/SearchInput';
+import IngredientCard from '@/components/atoms/IngredientCard';
 import EmptyState from '@/components/atoms/EmptyState';
 import LoadingSpinner from '@/components/atoms/LoadingSpinner';
 import { Ingredient } from '@/types';
@@ -49,18 +50,10 @@ export default function IngredientsList({ ingredients, isLoading }: IngredientsL
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {filteredIngredients.map((ing) => (
-              <div key={ing.strIngredient} className="transform transition-all duration-300 hover:scale-[1.02]">
-                <a
-                  href={`/ingredients/${encodeURIComponent(ing.strIngredient)}`}
-                  className="block p-5 rounded-2xl bg-white/70 backdrop-blur-sm border border-white/50
-                    hover:bg-white hover:shadow-xl hover:-translate-y-1 hover:border-transparent
-                    transition-all duration-300"
-                >
-                  <span className="text-gray-700 font-medium text-lg">
-                    {ing.strIngredient.charAt(0).toUpperCase() + ing.strIngredient.slice(1).toLowerCase()}
-                  </span>
-                </a>
-              </div>
+              <IngredientCard
+                key={ing.strIngredient}
+                name={ing.strIngredient}
+              />
             ))}
           </div>
         </>
