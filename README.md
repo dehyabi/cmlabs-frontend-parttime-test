@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍳 Recipe Explorer
 
-## Getting Started
+A modern, elegant web application to discover delicious recipes by ingredients. Built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+![Recipe Explorer](public/icon.svg)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **Ingredients Page** - Browse all ingredients with auto-categorized sections (Meat & Poultry, Seafood, Vegetables, Fruits, etc.)
+- **Ingredient Detail Page** - View meals by selected ingredient with search functionality
+- **Meal Detail Page** - Complete recipe with ingredients, instructions, and embedded YouTube video
+- **Search** - Real-time search for ingredients and meals
+- **Responsive Design** - Optimized for desktop, tablet, and mobile
+- **Modern UI** - Elegant, light, minimalist design with colorful gradients
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **API:** [TheMealDB](https://www.themealdb.com/api.php)
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── page.tsx                    # Ingredients list page
+│   ├── layout.tsx                  # Root layout with header/footer
+│   ├── ingredients/[name]/page.tsx # Meals by ingredient
+│   └── meals/[id]/page.tsx         # Meal detail page
+├── components/
+│   ├── atoms/                      # Basic UI elements
+│   │   ├── IngredientCard.tsx
+│   │   ├── MealCard.tsx
+│   │   ├── SearchInput.tsx
+│   │   ├── LoadingSpinner.tsx
+│   │   └── EmptyState.tsx
+│   └── molecules/                  # Composite components
+│       ├── IngredientsList.tsx
+│       └── MealsList.tsx
+├── lib/
+│   ├── api.ts                      # API client
+│   └── categories.ts               # Ingredient categorization
+└── types/
+    └── index.ts                    # TypeScript types
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+ 
+- npm or yarn
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Clone the repository
+git clone https://github.com/dehyabi/cmlabs-frontend-parttime-test.git
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Navigate to project directory
+cd cmlabs-frontend-parttime-test
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Install dependencies
+npm install
 
-## Deploy on Vercel
+# Run development server
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open [http://localhost:3000](http://localhost:3000) to view in browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## 📱 Pages
+
+| Page | Route | Description |
+|------|-------|-------------|
+| Ingredients | `/` | Browse all ingredients organized by category |
+| Ingredient Detail | `/ingredients/[name]` | Meals filtered by ingredient |
+| Meal Detail | `/meals/[id]` | Full recipe with video |
+
+## 🎨 Design
+
+- **Color Palette:** Gradient colors (violet → pink → orange)
+- **Typography:** Inter font family
+- **Components:** Atomic design pattern (atoms/molecules)
+- **Responsive:** Mobile-first approach with Tailwind breakpoints
+
+## 📖 API Endpoints Used
+
+| Endpoint | Description |
+|----------|-------------|
+| `list.php?i=list` | Get all ingredients |
+| `filter.php?i={ingredient}` | Filter meals by ingredient |
+| `search.php?s={name}` | Search meals by name |
+| `lookup.php?i={id}` | Get meal details |
+
+## 👤 Author
+
+**Dehya Qalbi**
+- GitHub: [@dehyabi](https://github.com/dehyabi)
+- Email: dehyafullstack@gmail.com
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Made with ❤️ for cmlabs frontend test
+</p>
