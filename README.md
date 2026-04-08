@@ -2,6 +2,8 @@
 
 A modern, elegant web application to discover delicious recipes by ingredients. Built with Next.js, TypeScript, and Tailwind CSS.
 
+🔗 **Live Demo:** [https://dehya-qalbi-cmlabs-frontend-parttime-test.vercel.app/](https://dehya-qalbi-cmlabs-frontend-parttime-test.vercel.app/)
+
 ![Recipe Explorer](public/icon.svg)
 
 ## ✨ Features
