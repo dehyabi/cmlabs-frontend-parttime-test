@@ -6,6 +6,7 @@ import IngredientCard from '@/components/atoms/IngredientCard';
 import EmptyState from '@/components/atoms/EmptyState';
 import LoadingSpinner from '@/components/atoms/LoadingSpinner';
 import { Ingredient } from '@/types';
+import { groupIngredientsByCategory, getIngredientCategory } from '@/lib/categories';
 
 interface IngredientsListProps {
   ingredients: Ingredient[];
@@ -15,11 +16,20 @@ interface IngredientsListProps {
 export default function IngredientsList({ ingredients, isLoading }: IngredientsListProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredIngredients = useMemo(() => {
-    if (!searchQuery.trim()) return ingredients;
-    return ingredients.filter((ing) =>
-      ing.strIngredient.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  const { filteredIngredients, groupedIngredients, isSearching } = useMemo(() => {
+    const filtered = searchQuery.trim()
+      ? ingredients.filter((ing) =>
+          ing.strIngredient.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      : ingredients;
+    
+    const grouped = groupIngredientsByCategory(filtered);
+    
+    return {
+      filteredIngredients: filtered,
+      groupedIngredients: grouped,
+      isSearching: searchQuery.trim().length > 0,
+    };
   }, [ingredients, searchQuery]);
 
   if (isLoading) {
@@ -41,7 +51,7 @@ export default function IngredientsList({ ingredients, isLoading }: IngredientsL
           message={searchQuery ? 'No ingredients found matching your search' : 'No ingredients available'}
           icon={searchQuery ? '🔍' : '🥗'}
         />
-      ) : (
+      ) : isSearching ? (
         <>
           <div className="flex items-center justify-between px-2">
             <p className="text-gray-500 font-medium">
@@ -56,6 +66,28 @@ export default function IngredientsList({ ingredients, isLoading }: IngredientsL
               />
             ))}
           </div>
+        </>
+      ) : (
+        <>
+          {Object.entries(groupedIngredients).map(([category, items]) => (
+            <div key={category} className="space-y-4">
+              <div className="flex items-center gap-3 px-2">
+                <span className="text-2xl">{getIngredientCategory(items[0]?.strIngredient || '').emoji}</span>
+                <h2 className="text-xl font-bold text-gray-800">{category}</h2>
+                <span className="px-2 py-0.5 bg-gray-100 rounded-full text-sm text-gray-500">
+                  {items.length}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                {items.map((ing) => (
+                  <IngredientCard
+                    key={ing.strIngredient}
+                    name={ing.strIngredient}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
         </>
       )}
     </div>
