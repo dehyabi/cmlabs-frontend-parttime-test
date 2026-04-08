@@ -4,8 +4,6 @@ A modern, elegant web application to discover delicious recipes by ingredients. 
 
 🔗 **Live Demo:** [https://dehya-qalbi-cmlabs-frontend-parttime-test.vercel.app/](https://dehya-qalbi-cmlabs-frontend-parttime-test.vercel.app/)
 
-![Recipe Explorer](public/icon.svg)
-
 ## ✨ Features
 
 - **Ingredients Page** - Browse all ingredients with auto-categorized sections (Meat & Poultry, Seafood, Vegetables, Fruits, etc.)
