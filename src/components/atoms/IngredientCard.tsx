@@ -7,6 +7,9 @@ interface IngredientCardProps {
 }
 
 export default function IngredientCard({ name }: IngredientCardProps) {
+  // Capitalize first letter for display
+  const displayName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+
   return (
     <Link
       href={`/ingredients/${encodeURIComponent(name)}`}
@@ -18,11 +21,11 @@ export default function IngredientCard({ name }: IngredientCardProps) {
         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 
           flex items-center justify-center text-white font-semibold text-sm shadow-md
           group-hover:scale-110 transition-transform duration-200">
-          {name.charAt(0).toUpperCase()}
+          {displayName.charAt(0)}
         </div>
-        <span className="text-gray-700 font-medium capitalize group-hover:text-emerald-600 
+        <span className="text-gray-700 font-medium group-hover:text-emerald-600 
           transition-colors duration-200">
-          {name}
+          {displayName}
         </span>
       </div>
     </Link>
