@@ -37,35 +37,31 @@ export default function IngredientCard({ name }: IngredientCardProps) {
         hover:bg-white hover:shadow-xl hover:-translate-y-1 hover:border-transparent
         transition-all duration-300 cursor-pointer"
     >
-      {/* Small image in corner like a stamp/envelope */}
-      <div className="absolute top-3 right-3 w-12 h-12 rounded-lg overflow-hidden shadow-md bg-gradient-to-br opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
-        <Image
-          src={imageUrl}
-          alt={displayName}
-          width={48}
-          height={48}
-          className="object-cover w-full h-full"
-          unoptimized
-        />
-      </div>
-      
-      <div className="p-4 pr-16">
-        <div className="flex items-center gap-3">
-          <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${gradient}
-            flex items-center justify-center text-white font-bold text-lg shadow-lg
-            group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
-            {displayName.charAt(0)}
-          </div>
-          <div className="flex-1 min-w-0">
-            <span className="text-gray-800 font-semibold text-base group-hover:text-gray-900 transition-colors duration-200">
-              {displayName}
-            </span>
-          </div>
+      {/* Image on left side */}
+      <div className="flex items-center gap-4 p-4">
+        <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg bg-gradient-to-br flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+          <Image
+            src={imageUrl}
+            alt={displayName}
+            width={64}
+            height={64}
+            className="object-cover w-full h-full"
+            unoptimized
+          />
+        </div>
+        
+        <div className="flex-1 min-w-0">
+          <span className="text-gray-800 font-semibold text-lg group-hover:text-gray-900 transition-colors duration-200 block">
+            {displayName}
+          </span>
+          <span className="text-sm text-gray-500 mt-1 block">
+            View recipes →
+          </span>
         </div>
       </div>
       
       {/* Colored accent line */}
-      <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${gradient} opacity-60 group-hover:opacity-100 transition-opacity duration-300`} />
+      <div className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${gradient} opacity-70 group-hover:opacity-100 transition-opacity duration-300`} />
     </Link>
   );
 }

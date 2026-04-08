@@ -58,7 +58,7 @@ export default function IngredientsList({ ingredients, isLoading }: IngredientsL
               {filteredIngredients.length} ingredients found
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filteredIngredients.map((ing) => (
               <IngredientCard
                 key={ing.strIngredient}
@@ -78,7 +78,7 @@ export default function IngredientsList({ ingredients, isLoading }: IngredientsL
                   {items.length}
                 </span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {items.map((ing) => (
                   <IngredientCard
                     key={ing.strIngredient}
